@@ -1,0 +1,9 @@
+.error{
+    border: 2px solid red;
+}
+input{
+    outline: none;
+}
+#helperTextName{
+    color: red;
+}
