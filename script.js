@@ -8,78 +8,149 @@ const error = {
   phNumber: true,
 }
 
+
 function inputValueChange() {
-  var name = document.getElementById("name");
+  var firstName = document.getElementById("fname");
+  var LastName = document.getElementById("lname");
   var email = document.getElementById("email");
-  var gender = document.getElementById("gender");
+  var password = document.getElementById("password");
   var phNumber = document.getElementById("ph_number");
+  var bio = document.getElementById("bio");
 
 
 
-  const typeOfname = Number(name.value);
 
-  const phoneno = /^\d{10}$/;
+  // First Name
   var helperTextName = document.getElementById("helperTextName");
 
-  if(name.value === ""){
+  if (firstName.value === "") {
     error.name = true;
-    name.classList.add("error");
-    helperTextName.innerText = `Name Can't be blank`;
-
-  }else if(name.value.length < 3){
-    error.name = true;
-    name.classList.add("error");
-    helperTextName.innerText = `Name must be greater than 2 characters`;
-
-  }else if((!(/^[a-zA-Z\s]+$/.test(name.value)))){
-    error.name = true;
-    name.classList.add("error");
-    helperTextName.innerText = `Please enter a valid Name`;
-
-  }else{
-    error.name = false;
-    name.classList.remove("error");
     helperTextName.innerText = "";
 
-  }
+  } else if (firstName.value.length < 3 || firstName.value.length > 16) {
+    error.name = true;
+    helperTextName.innerText = `First name must be contain 3-16 characters`;
 
-  if(email.value === ""){
-    error.email = true;
-    email.classList.add("error");
-  }else if((!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)))){
-    error.email = true;
-    email.classList.add("error");
-  }else{
-    error.email = false;
-    email.classList.remove("error");
-  }
+  } else if ((!(/^[a-zA-Z\s]+$/.test(firstName.value)))) {
+    error.name = true;
+    helperTextName.innerText = `First name must be alphanumeric`;
 
- 
-  // if (email.value === "" || (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)))) {
-  //   error.email = true;
-  //   email.classList.add("error");
-  // } else {
-  //   error.email = false;
-  //   email.classList.remove("error");
-
-  // }
-  if (gender.value === "" || (gender.value.toLowerCase() != "male" && gender.value.toLowerCase() != "female")) {
-    error.gender = true;
-    gender.classList.add("error");
   } else {
-    error.gender = false;
-    gender.classList.remove("error");
+    error.name = false;
+    helperTextName.innerText = "";
+    firstName.style.border = "none";
+
+  }
+
+
+  // Last Name
+
+  var helperTextLastName = document.getElementById('helperTextLastName');
+
+  if (LastName.value === "") {
+    error.name = true;
+    helperTextLastName.innerText = "";
+
+  } else if (LastName.value.length < 3 || LastName.value.length > 16) {
+    error.name = true;
+    helperTextLastName.innerText = `Last name must be contain 3-16 characters`;
+
+  } else if ((!(/^[a-zA-Z\s]+$/.test(LastName.value)))) {
+    error.name = true;
+    helperTextLastName.innerText = `Last name must be alphanumeric`;
+
+  } else {
+    error.name = false;
+    helperTextLastName.innerText = "";
+    LastName.style.border = "none";
 
 
   }
-  if ((phNumber.value === "" || !(phNumber.value.match(phoneno)))) {
-    error.phNumber = true;
-    phNumber.classList.add("error");
 
+  // Email
+
+  var helperTextEmail = document.getElementById('helperTextEmail');
+
+  if (email.value === "") {
+    error.name = true;
+    helperTextEmail.innerText = "";
+
+  } else if ((/^[a-zA-Z\s]+$/.test(email.value))) {
+    error.name = true;
+    helperTextEmail.innerText = `Email must be a valid address,e.g example@gmail.com`;
+
+  } else {
+    error.name = false;
+    helperTextEmail.innerText = "";
+    email.style.border = "none";
+
+
+  }
+
+  // Password
+
+  var helperTextPassword = document.getElementById('helperTextPassword');
+
+  var passwordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+
+  if (password.value === "") {
+    error.name = true;
+    helperTextPassword.innerText = "";
+  } else if (!(password.value.match(passwordValid))) {
+    error.name = true;
+    helperTextPassword.innerText = `password must be alphanumeric(@,_and- are also allowed) and between 6-20 characters`;
+
+  } else {
+    error.name = false;
+    helperTextPassword.innerText = "";
+    password.style.border = "none";
+
+
+  }
+
+  // Phone number
+
+  var helperTextPhone = document.getElementById('helperTextPhone');
+  const phoneno = /^\d{10}$/;
+
+
+  if (phNumber.value === "") {
+    error.phNumber = true;
+    helperTextPhone.innerText = "";
+  } else if (!(phNumber.value.match(phoneno))) {
+    error.name = true;
+    helperTextPhone.innerText = `A valid Phone number contains 10 digits`;
 
   } else {
     error.phNumber = false;
-    phNumber.classList.remove("error");
+    helperTextPhone.innerText = "";
+    phNumber.style.border = "none";
+
+
+  }
+
+
+  // Bio
+
+  var helperTextBio = document.getElementById('helperTextBio');
+
+
+  if (bio.value === "") {
+    error.bio = true;
+    helperTextBio.innerText = "";
+  } else if (bio.value.length <= 8 || bio.value.length >= 50) {
+    error.name = true;
+    helperTextBio.innerText = `Bio must be contain 8-50 characters`;
+
+  } else if ((!(/^[a-zA-Z\s]+$/.test(bio.value)))) {
+    error.name = true;
+    helperTextBio.innerText = `Bio must be alphanumeric`;
+  }
+  else {
+    error.bio = false;
+    helperTextBio.innerText = "";
+    bio.style.border = "none";
 
 
   }
@@ -88,18 +159,23 @@ function inputValueChange() {
 
 
 function submitData() {
-  var name = document.getElementById("name");
+  var firstName = document.getElementById("fname");
+  var LastName = document.getElementById("lname");
   var email = document.getElementById("email");
-  var gender = document.getElementById("gender");
+  var password = document.getElementById("password");
   var phNumber = document.getElementById("ph_number");
+  var bio = document.getElementById("bio");
 
   if (error.name === true || error.email === true || error.gender === true || error.phNumber === true) {
     console.log("errors are there");
-    name.classList.add("error");
-    email.classList.add("error");
-    gender.classList.add("error");
-    phNumber.classList.add("error");
+    firstName.style.border = "1px solid red";
+    LastName.style.border = "1px solid red";
+    email.style.border = "1px solid red";
+    password.style.border = "1px solid red";
+    phNumber.style.border = "1px solid red";
+    bio.style.border = "1px solid red";
   } else {
     console.log("button clicked");
+
   }
 }

@@ -1,9 +1,60 @@
-.error{
-    border: 2px solid red;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-input{
+body {
+    background: linear-gradient(rgba(13, 207, 255, 0.884), 
+    rgba(100, 109, 25, 0.87)),url('./back.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95vh;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-top: 2rem;
+}
+.main label {
+  font-size: 1rem;
+}
+.main input {
+  margin-top: 0.5rem;
+  width: 50vw;
+  padding: 0.6rem 1rem;
+  border-radius: 15px;
+  border: 0;
+}
+.main p {
+  text-align: center;
+  padding: 1rem;
+}
+
+input {
+  outline: none;
+}
+#helperTextName,
+#helperTextLastName,
+#helperTextEmail,
+#helperTextPassword,
+#helperTextPhone,
+#helperTextBio {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+button{
+    cursor: pointer;
+    padding: .5rem 2rem;
     outline: none;
-}
-#helperTextName{
-    color: red;
+    background: rgb(23, 74, 216);
+    border-radius: 5px;
+    border: none;
+    width: 50%;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #b9f3fc;
 }
